@@ -1,7 +1,5 @@
 package syntaxtree;
 
-public class Op {
-    double getNumResult(double in){
-        return in * 2;
-    }
+public interface Op {
+    double getNumResult(double in);
 }
