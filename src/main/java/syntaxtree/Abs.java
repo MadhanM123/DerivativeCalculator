@@ -9,7 +9,7 @@ public class Abs extends UnaryOp {
     @Override
     public double getNumResult(double in)
     {
-        return Math.abs(op.getNumResult(in));
+        return Math.abs(this.getOp().getNumResult(in));
     }
 
     @Override
@@ -18,11 +18,11 @@ public class Abs extends UnaryOp {
         if(this == obj) return true;
         if(!(obj instanceof Abs)) return false;
         Abs other = (Abs) obj;
-        return (op.equals(other.op));
+        return (this.getOp().equals(other.getOp()));
     }
 
     @Override
     public int hashCode(){
-        return 7 * op.hashCode();
+        return 7 * this.getOp().hashCode();
     }
 }

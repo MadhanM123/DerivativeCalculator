@@ -1,8 +1,8 @@
 package syntaxtree;
 
-public class Sin extends UnaryOp {
+public class Asin extends UnaryOp {
 
-    public Sin(Op op){
+    public Asin(Op op){
         super(op);
     }
 
@@ -10,27 +10,30 @@ public class Sin extends UnaryOp {
     public boolean equals(Object o)
     {
         if(this == o) return true;
-        if(!(o instanceof Sin)) return false;
-        Sin oth = (Sin) o;
+        if(!(o instanceof Asin)) return false;
+        Asin oth = (Asin) o;
         return this.getOp().equals(oth.getOp());
     }
 
     @Override
     public int hashCode()
     {
-        return 47 * this.getOp().hashCode();
+        return 13 * this.getOp().hashCode();
     }
 
     @Override
     public String toString()
     {
-        return "sin(" + this.getOp().toString() + ")";
+        return "asin(" + this.getOp().toString() + ")";
     }
 
     @Override
     public double getNumResult(double in)
     {
-        return Math.sin(this.getOp().getNumResult(in));
+        return Math.asin(this.getOp().getNumResult(in));
     }
+
     
+
+
 }

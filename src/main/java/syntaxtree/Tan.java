@@ -12,25 +12,25 @@ public class Tan extends UnaryOp {
         if(this == o) return true;
         if(!(o instanceof Tan)) return false;
         Tan oth = (Tan) o;
-        return this.op.equals(oth.op);
+        return this.getOp().equals(oth.getOp());
     }
 
     @Override
     public int hashCode()
     {
-        return 59 * op.hashCode();
+        return 59 * this.getOp().hashCode();
     }
 
     @Override
     public String toString()
     {
-        return "tan(" + op.toString() + ")";
+        return "tan(" + this.getOp().toString() + ")";
     }
 
     @Override
     public double getNumResult(double in)
     {
-        return Math.tan(op.getNumResult(in));
+        return Math.tan(this.getOp().getNumResult(in));
     }
     
 }

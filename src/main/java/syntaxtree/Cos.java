@@ -12,25 +12,25 @@ public class Cos extends UnaryOp {
         if(this == o) return true;
         if(!(o instanceof Cos)) return false;
         Cos oth = (Cos) o;
-        return this.op.equals(oth.op);
+        return this.getOp().equals(oth.getOp());
     }
 
     @Override
     public int hashCode()
     {
-        return 29 * op.hashCode();
+        return 29 * this.getOp().hashCode();
     }
 
     @Override
     public String toString()
     {
-        return "cos(" + op.toString() + ")";
+        return "cos(" + this.getOp().toString() + ")";
     }
 
     @Override
     public double getNumResult(double in)
     {
-        return Math.cos(op.getNumResult(in));
+        return Math.cos(this.getOp().getNumResult(in));
     }
     
 }

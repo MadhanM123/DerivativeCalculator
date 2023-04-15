@@ -12,25 +12,25 @@ public class Exp extends UnaryOp {
         if(this == op) return true;
         if(!(op instanceof Exp)) return false;
         Exp oth = (Exp) op;
-        return this.op.equals(oth.op);
+        return this.getOp().equals(oth.getOp());
     }
 
     @Override
     public int hashCode()
     {
-        return 31 * op.hashCode();
+        return 31 * this.getOp().hashCode();
     }
 
     @Override
     public String toString()
     {
-        return "e^(" + op.toString() + ")";
+        return "e^(" + this.getOp().toString() + ")";
     }
 
     @Override
     public double getNumResult(double in)
     {
-        return Math.exp(op.getNumResult(in));
+        return Math.exp(this.getOp().getNumResult(in));
     }
     
 }

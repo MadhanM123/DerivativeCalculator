@@ -12,25 +12,25 @@ public class Negate extends UnaryOp {
         if(this == obj) return true;
         if(!(obj instanceof Negate)) return false;
         Negate other = (Negate) obj;
-        return this.op.equals(other.op);
+        return this.getOp().equals(other.getOp());
     }
 
     @Override
     public int hashCode()
     {
-        return 41 * this.op.hashCode();
+        return 41 * this.getOp().hashCode();
     }
 
     @Override
     public String toString()
     {
-        return "-" + this.op.toString();
+        return "-" + this.getOp().toString();
     }
 
     @Override
     public double getNumResult(double in)
     {
-        return -this.op.getNumResult(in);
+        return -this.getOp().getNumResult(in);
     }
 
     
