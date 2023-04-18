@@ -91,7 +91,35 @@ public class ExpParser {
         return this;
     }
 
+    public ExpParser operators(List<Operator> ops){
+        for(Operator op : ops){
+            this.operator(op);
+        }
+        return this;
+    }
 
+    public Token[] build(){
+        if(exp.length() == 0){
+            throw new IllegalArgumentException("Expression cannot be empty");
+        }
 
+        this.constants();
 
+        for(String var : varNames){
+            if(Functions.getBuiltinFunction(var) != null || useFuncs.containsKey(var)){
+                throw new IllegalArgumentException("Duplicated function as variable");
+            }
+        }
+
+        Token[] tokens = ShuntingYard.convertToRPN(exp, useFuncs, useOps, varNames, implicitMultiply);
+
+        return tokens;
+    }
+
+    private void constants(){
+        varNames.add("pi");
+        varNames.add("π");
+        varNames.add("e");
+        varNames.add("φ");
+    }
 }
