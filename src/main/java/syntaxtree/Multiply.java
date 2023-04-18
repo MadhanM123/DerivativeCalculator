@@ -32,5 +32,15 @@ public class Multiply extends BinaryOp {
     {
         return this.getLeft().getNumResult(in) * this.getRight().getNumResult(in);
     }
+
+    @Override
+    public Op derivative()
+    {
+        //Product rule
+        return new Add(new Multiply(this.getLeft().derivative(), this.getRight()),
+         new Multiply(this.getLeft(), this.getRight().derivative()));
+    }
+
+    
     
 }

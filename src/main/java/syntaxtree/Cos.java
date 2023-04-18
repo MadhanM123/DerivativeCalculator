@@ -32,5 +32,10 @@ public class Cos extends UnaryOp {
     {
         return Math.cos(this.getOp().getNumResult(in));
     }
-    
+
+    @Override
+    public Op derivative()
+    {
+        return new Negate(new Multiply(new Sin(this.getOp()), this.getOp().derivative()));
+    } 
 }

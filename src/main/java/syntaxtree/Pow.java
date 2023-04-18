@@ -32,5 +32,18 @@ public class Pow extends BinaryOp{
     {
         return Math.pow(this.getLeft().getNumResult(in), this.getRight().getNumResult(in));
     }
+
+    @Override
+    public Op derivative()
+    {
+        // y = f ^ g
+        // y' = y * [(g' * ln(f)) + ( (g * f') / f)]
+
+        return new Multiply(new Pow(this.getLeft(), this.getRight()),
+            new Add(new Multiply(this.getRight().derivative(), new Log(this.getLeft())),
+                new Divide(new Multiply(this.getRight(), this.getLeft().derivative()), this.getLeft())));
+    }
+
+    
     
 }

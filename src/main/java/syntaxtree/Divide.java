@@ -32,5 +32,16 @@ public class Divide extends BinaryOp {
     {
         return this.getLeft().getNumResult(in) / this.getRight().getNumResult(in);
     }
+
+    @Override
+    public Op derivative()
+    {
+        //d/dx(fx/gx) = (gx*fx' - fx*gx') / (gx^2)
+        
+        return new Divide(new Subtract(new Multiply(this.getRight(), this.getLeft().derivative()),
+            new Multiply(this.getLeft(), this.getRight().derivative())), new Pow(this.getRight(), new Constant("2")));
+    }
+
+    
     
 }

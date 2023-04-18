@@ -32,5 +32,14 @@ public class Tan extends UnaryOp {
     {
         return Math.tan(this.getOp().getNumResult(in));
     }
+
+    @Override
+    public Op derivative()
+    {
+        return new Divide(this.getOp().derivative(),
+            new Pow(new Cos(this.getOp()), new Constant("2")));
+    }
+
+    
     
 }

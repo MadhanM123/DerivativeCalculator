@@ -54,7 +54,7 @@ public class TreeBuilder {
         }
     }
 
-    private Op getTree() throws TokenException{
+    public Op getTree() throws TokenException{
         Token t = iter.next();
 
         switch(t.getType()){

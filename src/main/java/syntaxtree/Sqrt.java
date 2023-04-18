@@ -32,5 +32,14 @@ public class Sqrt extends UnaryOp {
     {
         return Math.sqrt(this.getOp().getNumResult(in));
     }
+
+    @Override
+    public Op derivative()
+    {
+        return new Divide(this.getOp().derivative(), 
+        new Multiply(new Constant("2"), new Sqrt(this.getOp())));
+    }
+
+    
     
 }

@@ -32,5 +32,11 @@ public class Add extends BinaryOp{
     {
         return this.getLeft().getNumResult(in) + this.getRight().getNumResult(in);
     }
+
+    @Override
+    public Op derivative()
+    {
+        return new Add(this.getLeft().derivative(), this.getRight().derivative());
+    }
     
 }

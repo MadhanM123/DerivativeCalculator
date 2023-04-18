@@ -32,5 +32,12 @@ public class Exp extends UnaryOp {
     {
         return Math.exp(this.getOp().getNumResult(in));
     }
-    
+
+    @Override
+    public Op derivative()
+    {
+        //e^x = e^x * x'
+        
+        return new Multiply(new Exp(this.getOp()), this.getOp().derivative());
+    }
 }

@@ -33,5 +33,13 @@ public class Negate extends UnaryOp {
         return -this.getOp().getNumResult(in);
     }
 
+    @Override
+    public Op derivative()
+    {
+        return new Negate(this.getOp().derivative());
+    }
+
+    
+
     
 }

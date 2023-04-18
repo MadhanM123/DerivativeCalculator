@@ -26,5 +26,14 @@ public class SimpleVar implements Op {
     {
         return in;
     }
+
+    @Override
+    public Op derivative()
+    {
+        //Derivative of x is 1
+        return new Constant("1");
+    }
+
+    
     
 }

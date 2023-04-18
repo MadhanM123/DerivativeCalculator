@@ -33,5 +33,11 @@ public class Log extends UnaryOp{
         return Math.log(this.getOp().getNumResult(in));
     }
 
+    @Override
+    public Op derivative()
+    {
+        return new Divide(this.getOp().derivative(), this.getOp());
+    }
+
     
 }

@@ -33,5 +33,15 @@ public class Atan extends UnaryOp {
         return Math.atan(this.getOp().getNumResult(in));
     }
 
+    @Override
+    public Op derivative()
+    {
+        //(1/1+x^2) * x'
+        return new Divide(this.getOp().derivative(), 
+        new Add(new Constant("1"), new Pow(this.getOp(), new Constant("2"))));
+    }
+
+    
+
     
 }

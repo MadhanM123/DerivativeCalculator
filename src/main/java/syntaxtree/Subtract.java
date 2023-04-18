@@ -32,5 +32,13 @@ public class Subtract extends BinaryOp {
     {
         return this.getLeft().getNumResult(in) - this.getRight().getNumResult(in);
     }
+
+    @Override
+    public Op derivative()
+    {
+        return new Subtract(this.getLeft().derivative(), this.getRight().derivative());
+    }
+
+    
     
 }

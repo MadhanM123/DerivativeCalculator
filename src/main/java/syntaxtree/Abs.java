@@ -25,4 +25,15 @@ public class Abs extends UnaryOp {
     public int hashCode(){
         return 7 * this.getOp().hashCode();
     }
+
+    @Override
+    public Op derivative()
+    {
+        // (|gx| * gx') / gx
+
+        return new Divide(new Multiply(new Abs(this.getOp()),
+            this.getOp().derivative()), this.getOp());
+    }
+
+    
 }

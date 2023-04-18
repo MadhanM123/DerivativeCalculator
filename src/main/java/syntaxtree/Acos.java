@@ -33,5 +33,16 @@ public class Acos extends UnaryOp {
         return Math.acos(this.getOp().getNumResult(in));
     }
 
+    @Override
+    public Op derivative()
+    {
+        //(-1 / sqrt(1 - x^2)) * x'
+
+        return new Negate( new Divide(this.getOp().derivative(), 
+            new Sqrt(new Subtract(new Constant("1"), new Pow(this.getOp(), new Constant("2"))))));
+    }
+
+    
+
     
 }

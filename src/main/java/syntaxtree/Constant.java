@@ -33,4 +33,12 @@ public class Constant implements Op {
     {
         return Double.parseDouble(con);
     }
+
+    @Override
+    public Op derivative()
+    {
+        return new Constant("0");
+    }
+
+    
 }
